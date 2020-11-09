@@ -30,7 +30,7 @@ class Admin::UsersController < Admin::AdminController
     respond_to do |format|
       if @admin_user.save
         @admin_user.send_reset_password_instructions
-        format.html { redirect_to admin_user_path(@admin_user), notice: 'User was successfully created.' }
+        format.html { redirect_to admin_user_path(@admin_user), notice: 'Usuário criado com sucesso.' }
         format.json { render :show, status: :created, location: @admin_user }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class Admin::UsersController < Admin::AdminController
   def update
     respond_to do |format|
       if @admin_user.update(user_params)
-        format.html { redirect_to admin_user_path(@admin_user), notice: 'User was successfully updated.' }
+        format.html { redirect_to admin_user_path(@admin_user), notice: 'Usuário atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @admin_user }
       else
         format.html { render :edit }
