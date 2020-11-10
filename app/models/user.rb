@@ -18,4 +18,8 @@ class User < ApplicationRecord
   validates :email,    presence: true, uniqueness: { case_sensitive: false }, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :role,     inclusion: { in: roles.keys }
   validates :status,   inclusion: { in: [true, false] }
+
+  def active_for_authentication?
+    super && status
+  end
 end

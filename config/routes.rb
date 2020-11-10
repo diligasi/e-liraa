@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # devise_for :users
 
   namespace :admin do
-    devise_for :users, path: '', controllers: { sessions: 'admin/user/sessions', passwords: 'admin/user/passwords' }
+    devise_for :users, path: '', controllers: { sessions: 'admin/auth/sessions', passwords: 'admin/auth/passwords' }
 
     root 'users#index'
 

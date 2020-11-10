@@ -26,6 +26,22 @@
 
   <body class="hold-transition login-page">
     <div class="login-box">
+      <% if alert.present? %>
+        <div class="alert alert-danger alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <h5><i class="icon fas fa-ban"></i> Acesso Negado!</h5>
+          <%= alert %>
+        </div>
+      <% end %>
+
+      <% if notice.present? %>
+        <div class="alert alert-warning alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <h5><i class="icon fas fa-exclamation-triangle"></i> Acesso Negado!</h5>
+          <%= notice %>
+        </div>
+      <% end %>
+
       <div class="login-logo">
         <b>Admin e-LIR<i>A</i>a</b>
       </div>
