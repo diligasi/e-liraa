@@ -4,7 +4,7 @@ class Admin::DepartamentsController < Admin::AdminController
   # GET /admin/departaments
   # GET /admin/departaments.json
   def index
-    @admin_departaments = Departament.all
+    @admin_departaments = Departament.order(:name).page(page).per(per_page)
   end
 
   # GET /admin/departaments/1
@@ -62,13 +62,12 @@ class Admin::DepartamentsController < Admin::AdminController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_admin_departament
-      @admin_departament = Departament.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def departament_params
-      params.require(:departament).permit(:name, :description)
-    end
+  def set_admin_departament
+    @admin_departament = Departament.find(params[:id])
+  end
+
+  def departament_params
+    params.require(:departament).permit(:name, :description)
+  end
 end

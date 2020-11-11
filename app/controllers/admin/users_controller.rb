@@ -72,12 +72,4 @@ class Admin::UsersController < Admin::AdminController
   def user_params
     params.require(:user).permit(:name, :cpf, :email, :status, :role)
   end
-
-  def page
-    @page = params[:page] || 1
-  end
-
-  def per_page
-    @per_page = params[:per_page] || 25
-  end
 end

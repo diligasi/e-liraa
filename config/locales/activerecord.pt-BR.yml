@@ -4,6 +4,9 @@ pt-BR:
       user:
         one: Usuário
         other: Usuários
+      departament:
+        one: Secretaria
+        other: Secretarias
     attributes:
       user:
         name: Nome
@@ -16,6 +19,9 @@ pt-BR:
           lab: Monitor de laboratório
           field: Agente de campo
         status: Status
+      departament:
+        name: Nome
+        description: Descrição
     errors:
       models:
         user:
@@ -33,3 +39,7 @@ pt-BR:
               inclusion: "tem que ser um dos seguintes valores: Administrador, Supervisor, Monitor de laboratório ou Agente de campo"
             status:
               inclusion: "tem que ser um dos seguintes valores: true ou false (ativo ou inativo)"
+        departament:
+          attributes:
+            name:
+              blank: não pode ficar em branco.
