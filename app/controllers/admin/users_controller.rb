@@ -64,21 +64,20 @@ class Admin::UsersController < Admin::AdminController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_admin_user
-      @admin_user = User.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def user_params
-      params.require(:user).permit(:name, :cpf, :email, :status, :role)
-    end
+  def set_admin_user
+    @admin_user = User.find(params[:id])
+  end
 
-    def page
-      @page = params[:page] || 1
-    end
+  def user_params
+    params.require(:user).permit(:name, :cpf, :email, :status, :role)
+  end
 
-    def per_page
-      @per_page = params[:per_page] || 25
-    end
+  def page
+    @page = params[:page] || 1
+  end
+
+  def per_page
+    @per_page = params[:per_page] || 25
+  end
 end
