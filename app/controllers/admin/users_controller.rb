@@ -4,7 +4,7 @@ class Admin::UsersController < Admin::AdminController
   # GET /admin/users
   # GET /admin/users.json
   def index
-    @admin_users = User.all
+    @admin_users = User.order(:role, :id).page(page).per(per_page)
   end
 
   # GET /admin/users/1
@@ -72,5 +72,13 @@ class Admin::UsersController < Admin::AdminController
     # Only allow a list of trusted parameters through.
     def user_params
       params.require(:user).permit(:name, :cpf, :email, :status, :role)
+    end
+
+    def page
+      @page = params[:page] || 1
+    end
+
+    def per_page
+      @per_page = params[:per_page] || 25
     end
 end
