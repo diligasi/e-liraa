@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
     resources :users
     resources :departaments
+    resources :property_types
   end
 
   namespace :app do

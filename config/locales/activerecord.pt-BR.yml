@@ -7,6 +7,9 @@ pt-BR:
       departament:
         one: Secretaria
         other: Secretarias
+      property_type:
+        one: Tipo de imóvel
+        other: Tipos de imóvel
     attributes:
       user:
         name: Nome
@@ -20,6 +23,9 @@ pt-BR:
           field: Agente de campo
         status: Status
       departament:
+        name: Nome
+        description: Descrição
+      property_type:
         name: Nome
         description: Descrição
     errors:
@@ -40,6 +46,10 @@ pt-BR:
             status:
               inclusion: "tem que ser um dos seguintes valores: true ou false (ativo ou inativo)"
         departament:
+          attributes:
+            name:
+              blank: não pode ficar em branco.
+        property_type:
           attributes:
             name:
               blank: não pode ficar em branco.
