@@ -28,7 +28,7 @@ class Admin::DepartamentsController < Admin::AdminController
 
     respond_to do |format|
       if @admin_departament.save
-        format.html { redirect_to admin_departament_path(@admin_departament), notice: 'Departament was successfully created.' }
+        format.html { redirect_to admin_departament_path(@admin_departament), notice: 'Secretaria criada com sucesso.' }
         format.json { render :show, status: :created, location: @admin_departament }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class Admin::DepartamentsController < Admin::AdminController
   def update
     respond_to do |format|
       if @admin_departament.update(departament_params)
-        format.html { redirect_to admin_departament_path(@admin_departament), notice: 'Departament was successfully updated.' }
+        format.html { redirect_to admin_departament_path(@admin_departament), notice: 'Secretaria atualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @admin_departament }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class Admin::DepartamentsController < Admin::AdminController
   def destroy
     @admin_departament.destroy
     respond_to do |format|
-      format.html { redirect_to admin_departaments_url, notice: 'Departament was successfully destroyed.' }
+      format.html { redirect_to admin_departaments_url, notice: 'Secretaria apagada com sucesso.' }
       format.json { head :no_content }
     end
   end
