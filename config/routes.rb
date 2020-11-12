@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :users
     resources :departaments
     resources :property_types
+    resources :field_forms, only: %i[index show edit update]
   end
 
   namespace :app do

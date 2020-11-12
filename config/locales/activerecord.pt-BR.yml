@@ -10,6 +10,9 @@ pt-BR:
       property_type:
         one: Tipo de imóvel
         other: Tipos de imóvel
+      field_form:
+        one: Ficha de campo
+        other: Fichas de campo
     attributes:
       user:
         name: Nome
@@ -28,6 +31,28 @@ pt-BR:
       property_type:
         name: Nome
         description: Descrição
+      field_form:
+        status: Status
+        statuses:
+          pending: Pendente
+          complete: Completa
+        street: Rua
+        number: Número
+        complement: Complemento
+        district: Bairro
+        city: Cidade
+        state: Estado
+        country: País
+        zipcode: CEP
+        visit_status: Visita
+        visit_statuses:
+          allowed: Permitida
+          refused: Recusada
+          closed_location: Local fechado
+        visit_comment: Observação
+        larvae_found: Larvas encontradas?
+        larvicide: Larvicida
+        rodenticide: Raticida
     errors:
       models:
         user:
@@ -53,3 +78,19 @@ pt-BR:
           attributes:
             name:
               blank: não pode ficar em branco.
+        field_form:
+          attributes:
+            street:
+              blank: não pode ficar em branco.
+            district:
+              blank: não pode ficar em branco.
+            city:
+              blank: não pode ficar em branco.
+            state:
+              blank: não pode ficar em branco.
+            zipcode:
+              blank: não pode ficar em branco.
+            visit_status:
+              inclusion: "tem que ser um dos seguintes valores: Permitida, Recusada, Local fechado"
+            larvae_found:
+              inclusion: "tem que ser um dos seguintes valores: true ou false (encontrado ou não encontrado)"
