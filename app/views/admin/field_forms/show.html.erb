@@ -3,13 +3,13 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Detalhes de fichas de campo</h1>
+          <h1 class="m-0 text-dark">Detalhes da ficha</h1>
         </div>
         
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><%= link_to 'Home', admin_root_path %></li>
-            <li class="breadcrumb-item active">Detalhes de fichas de campo</li>
+            <li class="breadcrumb-item active">Detalhes da ficha</li>
           </ol>
         </div>
       </div>
@@ -23,27 +23,138 @@
       <div class="col-12">
         <div class="card card-primary">
           <div class="card-header">
-            <div class="col-sm-12">
-              <p id="notice"><%= notice %></p>
+            <h3 class="card-title">Ficha de campo</h3>
+
+            <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
             </div>
           </div>
 
           <div class="card-body">
-            <strong>Status de preenchimento da ficha</strong>
-            <p class="text-muted">
-              <%= field_form_list_status_component(@admin_field_form.status) %>
-            </p>
+            <div class="row">
+              <div class="col-sm-12">
+                <strong>Status de preenchimento da ficha:</strong>
+                <%= field_form_list_status_component(@admin_field_form.status) %>
+              </div>
+            </div>
 
-            <strong>Endereço</strong>
-            <p class="text-muted">
-              <%= field_form_list_address(@admin_field_form) %>
-            </p>
+            <br />
+
+            <div class="row">
+              <div class="col-sm-5">
+                <strong>Endereço</strong>
+                <p class="text-muted">
+                  <%= field_form_list_address(@admin_field_form) %>
+                </p>
+              </div>
+              
+              <div class="col-sm-3">
+                <strong>Tipo de imóvel</strong>
+                <p class="text-muted">
+                  <%= @admin_field_form.property_type.name %>
+                </p>
+              </div>
+              
+              <div class="col-sm-4">
+                <strong>Sobre a visita</strong>
+                <p class="text-muted">
+                  <%= t("activerecord.attributes.field_form.visit_statuses.#{@admin_field_form.visit_status}") %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-5">
+                <strong>Foram encontradas larvas?</strong>
+                <p class="text-muted">
+                  <%= field_form_simple_status_component(@admin_field_form.larvae_found) %>
+                </p>
+              </div>
+              
+              <div class="col-sm-3">
+                <strong>Uso de larvicida?</strong>
+                <p class="text-muted">
+                  <%= field_form_simple_status_component(@admin_field_form.larvicide) %>
+                </p>
+              </div>
+              
+              <div class="col-sm-4">
+                <strong>Uso de raticida?</strong>
+                <p class="text-muted">
+                  <%= field_form_simple_status_component(@admin_field_form.rodenticide) %>
+                </p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-12">
+                <strong>Observações</strong>
+                <p class="text-muted">
+                  <%= @admin_field_form.visit_comment || 'Sem observações.' %>
+                </p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-12">
+                  <h4><strong>Tubitos Associados</strong></h4>
+                  <hr style="margin: -5px 0 10px 0;">
+              </div>
+            </div>
+
+            <% if @admin_field_form.test_tubes.empty? %>
+              <div class="row">
+                <div class="mx-auto" style="width: 250px;">
+                  <p>Não há nenhum tubito associado.</p>
+                </div>
+              </div>
+            <% else %>
+              <% @admin_field_form.test_tubes.each.with_index do |test_tube, idx| %>
+                <div id="accordion">
+                  <div class="card card-info">
+                    <div class="card-header">
+                      <h4 class="card-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse<%= idx %>">
+                          <strong>Tubito Nº</strong> <i><%= test_tube.code %></i>
+                        </a>
+                      </h4>
+                    </div>
+
+                    <div id="collapse<%= idx %>" class="panel-collapse collapse in">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-sm-5">
+                            <strong>Local onde foram encontradas larvas:</strong>
+                            <%= test_tube.shed_type.name %>
+                          </div>
+                          
+                          <div class="col-sm-3">
+                            <strong>Qtd. de larvas coletadas:</strong>
+                            <%= test_tube.collected_amount %>
+                          </div>
+                          
+                          <div class="col-sm-4">
+                            <strong>OBS.:</strong>
+                            <%= test_tube.comments %>
+                          </div>
+                        </div>
+
+                        <br />
+
+                        <>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <%end %>
           </div>
 
+          <!--
           <div class="card-footer">
             <%= link_to "#{translate 'actions.back'}", admin_field_forms_path, class: 'btn btn-secondary' %>
             <%= link_to "#{translate 'actions.edit'}", edit_admin_field_form_path(@admin_field_form), class: 'btn btn-primary' %>
           </div>
+          -->
         </div>
       </div>
     </div>

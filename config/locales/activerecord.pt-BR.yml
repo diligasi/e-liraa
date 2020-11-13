@@ -22,6 +22,9 @@ pt-BR:
       shed_type:
         one: Local de coleta
         other: Locais de coleta
+      test_tube:
+        one: Tubito
+        other: Tubitos
     attributes:
       user:
         name: Nome
@@ -71,6 +74,10 @@ pt-BR:
       shed_type:
         name: Nome
         description: Descrição
+      test_tube:
+        code: Código
+        collected_amount: Qtd. de larvas coletadas
+        comments: Observação
     errors:
       models:
         user:
@@ -126,3 +133,12 @@ pt-BR:
           attributes:
             name:
               blank: não pode ficar em branco.
+        test_tube:
+          attributes:
+            code:
+              blank: não pode ficar em branco.
+            collected_amount:
+              not_a_number: tem que ser um número.
+              greater_than: tem que ser maior que %{count}.
+            field_form:
+              required: precisa estar assossiado.

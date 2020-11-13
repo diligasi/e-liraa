@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_13_013627) do
+ActiveRecord::Schema.define(version: 2020_11_13_030056) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,18 @@ ActiveRecord::Schema.define(version: 2020_11_13_013627) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "test_tubes", force: :cascade do |t|
+    t.string "code"
+    t.bigint "shed_type_id"
+    t.integer "collected_amount"
+    t.text "comments"
+    t.bigint "field_form_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["field_form_id"], name: "index_test_tubes_on_field_form_id"
+    t.index ["shed_type_id"], name: "index_test_tubes_on_shed_type_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "cpf"
@@ -93,5 +105,7 @@ ActiveRecord::Schema.define(version: 2020_11_13_013627) do
 
   add_foreign_key "field_forms", "property_types"
   add_foreign_key "field_forms", "users"
+  add_foreign_key "test_tubes", "field_forms"
+  add_foreign_key "test_tubes", "shed_types"
   add_foreign_key "users", "departaments"
 end

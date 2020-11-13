@@ -2,6 +2,8 @@ class FieldForm < ApplicationRecord
   belongs_to :user
   belongs_to :property_type
 
+  has_many :test_tubes
+
   enum status: {
     pending: 0,
     complete: 1
