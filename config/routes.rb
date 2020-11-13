@@ -8,8 +8,9 @@ Rails.application.routes.draw do
 
     resources :faqs
     resources :users
-    resources :larva_species
+    resources :shed_types
     resources :departaments
+    resources :larva_species
     resources :property_types
     resources :field_forms, only: %i[index show edit update]
   end

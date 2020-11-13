@@ -19,6 +19,9 @@ pt-BR:
       larva_specy:
         one: Espécie da larva
         other: Espécies de larva
+      shed_type:
+        one: Local de coleta
+        other: Locais de coleta
     attributes:
       user:
         name: Nome
@@ -63,6 +66,9 @@ pt-BR:
         question: Pergunta
         answer: Resposta
       larva_specy:
+        name: Nome
+        description: Descrição
+      shed_type:
         name: Nome
         description: Descrição
     errors:
@@ -113,6 +119,10 @@ pt-BR:
               answer:
                 blank: não pode ficar em branco.
         larva_specy:
+          attributes:
+            name:
+              blank: não pode ficar em branco.
+        shed_type:
           attributes:
             name:
               blank: não pode ficar em branco.
