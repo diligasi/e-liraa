@@ -13,6 +13,9 @@ pt-BR:
       field_form:
         one: Ficha de campo
         other: Fichas de campo
+      faq:
+        one: FAQ
+        other: FAQs
     attributes:
       user:
         name: Nome
@@ -53,6 +56,9 @@ pt-BR:
         larvae_found: Larvas encontradas?
         larvicide: Larvicida
         rodenticide: Raticida
+      faq:
+        question: Pergunta
+        answer: Resposta
     errors:
       models:
         user:
@@ -94,3 +100,9 @@ pt-BR:
               inclusion: "tem que ser um dos seguintes valores: Permitida, Recusada, Local fechado"
             larvae_found:
               inclusion: "tem que ser um dos seguintes valores: true ou false (encontrado ou não encontrado)"
+        faq:
+          attributes:
+              question:
+                blank: não pode ficar em branco.
+              answer:
+                blank: não pode ficar em branco.

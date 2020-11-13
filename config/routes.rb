@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
     root 'users#index'
 
+    resources :faqs
     resources :users
     resources :departaments
     resources :property_types
