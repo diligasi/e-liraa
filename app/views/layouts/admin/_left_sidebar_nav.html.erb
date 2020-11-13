@@ -20,28 +20,35 @@
         <li class="nav-item">
           <%= link_to admin_users_path, class: 'nav-link' do %>
             <i class="nav-icon fas fa-users"></i>
-            <p>Usuários</p>
+            <p><%= translate 'activerecord.models.user.other' %></p>
           <% end %>
         </li>
         
         <li class="nav-item">
           <%= link_to admin_departaments_path, class: 'nav-link' do %>
             <i class="nav-icon fas fa-building"></i>
-            <p>Secretarias</p>
+            <p><%= translate 'activerecord.models.departament.other' %></p>
           <% end %>
         </li>
         
         <li class="nav-item">
           <%= link_to admin_property_types_path, class: 'nav-link' do %>
             <i class="nav-icon fas fa-archway"></i>
-            <p>Tipos de Imóvel</p>
+            <p><%= translate 'activerecord.models.property_type.other' %></p>
           <% end %>
         </li>
         
         <li class="nav-item">
           <%= link_to admin_field_forms_path, class: 'nav-link' do %>
             <i class="nav-icon fas fa-copy"></i>
-            <p>Fichas de campo</p>
+            <p><%= translate 'activerecord.models.field_form.other' %></p>
+          <% end %>
+        </li>
+        
+        <li class="nav-item">
+          <%= link_to admin_faqs_path, class: 'nav-link' do %>
+            <i class="nav-icon fas fa-info-circle"></i>
+            <p><%= translate 'activerecord.models.faq.other' %></p>
           <% end %>
         </li>
       </ul>
