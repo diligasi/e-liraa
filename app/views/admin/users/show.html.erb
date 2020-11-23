@@ -53,6 +53,11 @@
             <p class="text-muted">
               <%= roles_name_for_human(@admin_user.role) %>
             </p>
+
+            <strong>Secretaria</strong>
+            <p class="text-muted">
+              <%= @admin_user.departament.present? ? @admin_user.departament.name : '---' %>
+            </p>
           </div>
 
           <div class="card-footer">

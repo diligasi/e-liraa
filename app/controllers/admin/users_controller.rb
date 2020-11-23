@@ -70,6 +70,6 @@ class Admin::UsersController < Admin::AdminController
   end
 
   def user_params
-    params.require(:user).permit(:name, :cpf, :email, :status, :role)
+    params.require(:user).permit(:name, :cpf, :email, :status, :role, :departament_id)
   end
 end

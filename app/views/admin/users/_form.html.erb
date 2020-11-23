@@ -34,6 +34,11 @@
     </div>
 
     <div class="form-group">
+      <%= form.label :departament, 'Secretaria' %>
+      <%= form.select :departament_id, options_for_select(Departament.all.map { |ls| [ls.name, ls.id] }, form.object.departament_id), { include_blank: 'Opcional para usuários administradores' }, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
       <div class="custom-control custom-switch">
         <%= form.check_box :status, class: 'custom-control-input', id: 'customSwitch1' %>
         <%= form.label 'Ativar usuário?', class: 'custom-control-label', for: 'customSwitch1' %>
