@@ -25,6 +25,9 @@ pt-BR:
       test_tube:
         one: Tubito
         other: Tubitos
+      larva:
+        one: Larva
+        other: Larvas
     attributes:
       user:
         name: Nome
@@ -77,6 +80,9 @@ pt-BR:
       test_tube:
         code: Código
         collected_amount: Qtd. de larvas coletadas
+        comments: Observação
+      larva:
+        block: Quadra
         comments: Observação
     errors:
       models:

@@ -47,7 +47,7 @@
                     <td><%= field_form_list_larvae_status_component(admin_field_form.larvae_found) %></td>
                     <td><%= field_form_list_status_component(admin_field_form.status) %></td>
                     <td><%= link_to "#{translate 'actions.show'}", admin_field_form_path(admin_field_form), class: 'btn btn-block bg-gradient-info btn-sm' %></td>
-                    <td><%= link_to "#{translate 'actions.edit'}", edit_admin_field_form_path(admin_field_form), class: 'btn btn-block bg-gradient-primary btn-sm' %></td>
+                    <td><%#= link_to "#{translate 'actions.edit'}", edit_admin_field_form_path(admin_field_form), class: 'btn btn-block bg-gradient-primary btn-sm' %></td>
                   </tr>
                 <% end %>
               </tbody>

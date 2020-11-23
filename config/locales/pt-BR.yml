@@ -59,6 +59,7 @@ pt-BR:
     destroy: Excluir
     new: Novo
     back: Voltar
+    close: Fechar
 
   helpers:
     submit:

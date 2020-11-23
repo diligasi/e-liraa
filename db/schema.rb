@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_13_030056) do
+ActiveRecord::Schema.define(version: 2020_11_13_155915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,17 @@ ActiveRecord::Schema.define(version: 2020_11_13_030056) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "larvas", force: :cascade do |t|
+    t.bigint "test_tube_id", null: false
+    t.bigint "larva_specy_id", null: false
+    t.string "block"
+    t.text "comments"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["larva_specy_id"], name: "index_larvas_on_larva_specy_id"
+    t.index ["test_tube_id"], name: "index_larvas_on_test_tube_id"
+  end
+
   create_table "property_types", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -105,6 +116,8 @@ ActiveRecord::Schema.define(version: 2020_11_13_030056) do
 
   add_foreign_key "field_forms", "property_types"
   add_foreign_key "field_forms", "users"
+  add_foreign_key "larvas", "larva_species"
+  add_foreign_key "larvas", "test_tubes"
   add_foreign_key "test_tubes", "field_forms"
   add_foreign_key "test_tubes", "shed_types"
   add_foreign_key "users", "departaments"
