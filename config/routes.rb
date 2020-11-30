@@ -17,7 +17,11 @@ Rails.application.routes.draw do
     resources :field_forms, only: %i[index show edit update]
   end
 
-  namespace :app do
-    # soon..
+  scope module: 'pwa', path: 'app' do
+    devise_for :users, path: '', controllers: { sessions: 'pwa/auth/sessions', passwords: 'pwa/auth/passwords' }
+
+    root 'field_forms#index'
+
+    resources :field_forms, except: %i[delete]
   end
 end
