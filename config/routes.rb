@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   scope module: 'pwa', path: 'app' do
     devise_for :users, path: '', controllers: { sessions: 'pwa/auth/sessions', passwords: 'pwa/auth/passwords' }
 
-    root 'field_forms#index'
+    root 'field_forms#index', as: 'app_root'
 
     resources :field_forms, except: %i[delete]
   end
