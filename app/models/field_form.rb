@@ -3,6 +3,7 @@ class FieldForm < ApplicationRecord
   belongs_to :property_type
 
   has_many :test_tubes
+  # accepts_nested_attributes_for :test_tubes, reject_if: :all_blank, allow_destroy: true
 
   enum status: {
     pending: 0,

@@ -68,6 +68,8 @@ pt-BR:
         larvae_found: Larvas encontradas?
         larvicide: Larvicida
         rodenticide: Raticida
+        property_type: Tipo de Imóvel
+        test_tubes: Tubito
       faq:
         question: Pergunta
         answer: Resposta
@@ -125,6 +127,10 @@ pt-BR:
               inclusion: "tem que ser um dos seguintes valores: Permitida, Recusada, Local fechado"
             larvae_found:
               inclusion: "tem que ser um dos seguintes valores: true ou false (encontrado ou não encontrado)"
+            property_type:
+              required: "é obrigatório"
+            test_tubes:
+              invalid: "inválido, apenas a observação é opicional"
         faq:
           attributes:
               question:

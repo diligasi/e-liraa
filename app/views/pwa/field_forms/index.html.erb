@@ -5,13 +5,6 @@
         <div class="col-sm-6">
           <h1 class="m-0 text-dark">Listagem de fichas de campo</h1>
         </div>
-        
-        <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><%= link_to 'Home', root_path %></li>
-            <li class="breadcrumb-item active">Listagem de fichas de campo</li>
-          </ol>
-        </div>
       </div>
     </div>
   </div>
@@ -20,34 +13,39 @@
 <section class="content">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-12">
+      <div class="col-md-12">
         <div class="card">
           <div class="card-header">
             <div class="col-sm-12">
+              <%= link_to new_field_form_path, class: 'btn bg-gradient-primary btn-sm  float-sm-right' do %>
+                <i class="nav-icon fas fa-plus"></i>
+                Adicionar nova ficha
+              <% end %>
             </div>
           </div>
           
-          <div class="card-body p-0">
-            <table class="table table-striped">
+          <div class="card-body table-responsive p-0">
+            <table class="table table-striped text-nowrap">
               <thead>
                 <tr>
-                  <th>Agente</th>
+                  <th></th>
+                  <th>Status</th>
                   <th>Endereço</th>
-                  <th>Presença de larva</th>
-                  <th>Status da ficha</th>
-                  <th colspan="2"></th>
+                  <th>Data</th>
                 </tr>
               </thead>
 
               <tbody>
                 <% @pwa_field_forms.each do |pwa_field_form| %>
                   <tr>
-                    <td><%= pwa_field_form.user.name %></td>
-                    <td><%= field_form_list_address(pwa_field_form) %></td>
-                    <td><%= field_form_list_larvae_status_component(pwa_field_form.larvae_found) %></td>
+                    <td>
+                      <%= link_to field_form_path(pwa_field_form), class: 'btn btn-block bg-gradient-info btn-sm' do %>
+                        <i class="nav-icon far fa-folder-open"></i>
+                      <% end %>
+                    </td>
                     <td><%= field_form_list_status_component(pwa_field_form.status) %></td>
-                    <td><%= link_to "#{translate 'actions.show'}", field_form_path(pwa_field_form), class: 'btn btn-block bg-gradient-info btn-sm' %></td>
-                    <td><%#= link_to "#{translate 'actions.edit'}", edit_pwa_field_form_path(pwa_field_form), class: 'btn btn-block bg-gradient-primary btn-sm' %></td>
+                    <td><%= field_form_list_address(pwa_field_form) %></td>
+                    <td><%= pwa_field_form.created_at.strftime('%d/%m/%Y') %></td>
                   </tr>
                 <% end %>
               </tbody>
