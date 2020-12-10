@@ -11,73 +11,29 @@
       </div>
 
       <div class="info">
-        <%#= link_to current_user.name, user_path(current_user) %>
+        <%= link_to current_user.name, user_path(current_user) %>
       </div>
     </div>
 
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
-          <%= link_to admin_users_path, class: 'nav-link' do %>
-            <i class="nav-icon fas fa-users"></i>
-            <p><%= translate 'activerecord.models.user.other' %></p>
-          <% end %>
-        </li>
-        
-        <li class="nav-item">
-          <%= link_to admin_departaments_path, class: 'nav-link' do %>
-            <i class="nav-icon fas fa-building"></i>
-            <p><%= translate 'activerecord.models.departament.other' %></p>
-          <% end %>
-        </li>
-        
-        <li class="nav-item">
-          <%= link_to admin_property_types_path, class: 'nav-link' do %>
-            <i class="nav-icon fas fa-archway"></i>
-            <p><%= translate 'activerecord.models.property_type.other' %></p>
-          <% end %>
-        </li>
-        
-        <li class="nav-item">
-          <%= link_to admin_field_forms_path, class: 'nav-link' do %>
+          <%= link_to field_forms_path, class: 'nav-link' do %>
             <i class="nav-icon fas fa-copy"></i>
             <p><%= translate 'activerecord.models.field_form.other' %></p>
           <% end %>
         </li>
         
-        <!--
         <li class="nav-item">
-          <%= link_to admin_larva_species_path, class: 'nav-link' do %>
-            <i class="nav-icon fas fa-dragon"></i>
-            <p><%= translate 'activerecord.models.larva_specy.other' %></p>
-          <% end %>
-        </li>
-        
-        <li class="nav-item">
-          <%= link_to admin_larva_species_path, class: 'nav-link' do %>
-            <i class="nav-icon fas fa-wave-square"></i>
-            <p><%= translate 'activerecord.models.larva_specy.other' %></p>
-          <% end %>
-        </li>
-        -->
-        
-        <li class="nav-item">
-          <%= link_to admin_larva_species_path, class: 'nav-link' do %>
-            <i class="nav-icon fas fa-biohazard"></i>
-            <p><%= translate 'activerecord.models.larva_specy.other' %></p>
-          <% end %>
-        </li>
-        
-        <li class="nav-item">
-          <%= link_to admin_shed_types_path, class: 'nav-link' do %>
-            <i class="nav-icon fas fa-city"></i>
-            <p><%= translate 'activerecord.models.shed_type.other' %></p>
+          <%= link_to admin_users_path, class: 'nav-link' do %>
+            <i class="nav-icon fas fa-info-circle"></i>
+            <p>Sobre<%#= translate 'activerecord.models.user.other' %></p>
           <% end %>
         </li>
         
         <li class="nav-item">
           <%= link_to admin_faqs_path, class: 'nav-link' do %>
-            <i class="nav-icon fas fa-info-circle"></i>
+            <i class="nav-icon fas fa-comments"></i>
             <p><%= translate 'activerecord.models.faq.other' %></p>
           <% end %>
         </li>

@@ -1,0 +1,64 @@
+<section class="content-header">
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark">Detalhes do usuário</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card card-primary">
+          <div class="card-header">
+            <div class="col-sm-12">
+              <p id="notice"><%= notice %></p>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <strong>Nome</strong>
+            <p class="text-muted">
+              <%= @pwa_user.name %>
+            </p>
+
+            <strong>CPF</strong>
+            <p class="text-muted">
+              <%= cpf_formatter(@pwa_user.cpf) %>
+            </p>
+
+            <strong>E-mail</strong>
+            <p class="text-muted">
+              <%= @pwa_user.email %>
+            </p>
+
+            <strong>Status</strong>
+            <p class="text-muted">
+              <%= @pwa_user.status ? 'Usuário ativo' : 'Usuário desabilitado' %>
+            </p>
+
+            <strong>Tipo</strong>
+            <p class="text-muted">
+              <%= roles_name_for_human(@pwa_user.role) %>
+            </p>
+
+            <strong>Secretaria</strong>
+            <p class="text-muted">
+              <%= @pwa_user.departament.present? ? @pwa_user.departament.name : '---' %>
+            </p>
+          </div>
+
+          <div class="card-footer">
+            <%= link_to "#{translate 'actions.back'}", :back, class: 'btn btn-secondary' %>
+            <%= link_to "#{translate 'actions.edit'}", edit_user_path(@pwa_user), class: 'btn btn-primary' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

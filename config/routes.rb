@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
     root 'field_forms#index', as: 'app_root'
 
+    resources :users,       except: %i[index new create destroy]
     resources :field_forms, except: %i[delete]
   end
 end
