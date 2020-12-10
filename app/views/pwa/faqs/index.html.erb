@@ -1,0 +1,14 @@
+<section class="content-header">
+  <h1 class="m-0 text-dark">FAQ</h1>
+</section>
+
+<section class="content px-2">
+  <% @pwa_faqs.each do |pwa_faq| %>
+    <h4><%= pwa_faq.question %></h4>
+    <p><%= pwa_faq.answer %></p>
+  <% end %>
+
+  <% if @pwa_faqs.blank? %>
+    <p class="col text-center">Não existem perguntas e respostas cadastradas.</p>
+  <% end %>
+</section>
