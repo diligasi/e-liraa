@@ -1,5 +1,5 @@
 # Users
-Users.find_or_create_by(name: 'Diogo de Lima', cpf: '126.379.327-40', status: true, role: 'admin', email: 'diogo@e-liraa.com', password: '123456')
+User.find_or_create_by(name: 'Diogo de Lima', cpf: '126.379.327-40', status: true, role: 'admin', email: 'diogo@e-liraa.com', password: '123456')
 
 # PropertyTypes
 PropertyType.find_or_create_by(name: 'Apartamento', description: '')
