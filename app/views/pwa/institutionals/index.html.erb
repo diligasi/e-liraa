@@ -1,0 +1,20 @@
+<section class="content-header text-center">
+  <h1 class="m-0 text-dark">e-LIR<i>A</i>a</h1>
+  <h6 class="m-0 text-dark">Levantamento digital de Índice Rápido para Aedes aegypti</h6>
+</section>
+
+<hr />
+
+<section class="content px-2">
+  <% if @pwa_institutional.blank? %>
+    <p class="col text-center">Informações de contato não cadastradas, as mesmas serão atualizadas em breve.</p>
+  <% else %>
+    <strong>Sobre o projeto</strong>
+    <p class="text-muted" style="text-align: justify; text-justify: inter-word;"><%= @pwa_institutional.description %></p>
+    <strong>Contato</strong>
+    <p class="text-muted"><%= @pwa_institutional.phone_numbers %></p>
+  <% end %>
+
+ <hr style="margin-top: 50px;" />
+  <p class="col text-center">e-LIR<i>A</i>a<br /><%= Time.now.year %></p>
+</section>

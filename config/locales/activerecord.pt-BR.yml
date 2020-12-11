@@ -28,6 +28,7 @@ pt-BR:
       larva:
         one: Larva
         other: Larvas
+      institutional: Sobre
     attributes:
       user:
         name: Nome
