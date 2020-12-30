@@ -71,14 +71,6 @@ Rails.application.configure do
     :port           => ENV['MAILGUN_SMTP_PORT'],
     :authentication => :plain
   }
-  # config.action_mailer.smtp_settings = {
-  #   :user_name => ENV['MAILTRAP_USER'],
-  #   :password => ENV['MAILTRAP_PASSWORD'],
-  #   :address => 'smtp.mailtrap.io',
-  #   :domain => 'smtp.mailtrap.io',
-  #   :port => '2525',
-  #   :authentication => :cram_md5
-  # }
   config.action_mailer.default_url_options = { :host => 'e-liraa-stg.herokuapp.com' }
 
   # Ignore bad email addresses and do not raise email delivery errors.
