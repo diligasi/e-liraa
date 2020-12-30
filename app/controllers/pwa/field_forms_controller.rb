@@ -5,10 +5,11 @@ class Pwa::FieldFormsController < Pwa::PwaController
   # GET /app/field_forms.json
   def index
     date_range = Date.today.beginning_of_month..Date.today.end_of_month
-    @pwa_field_forms = FieldForm.includes(:test_tubes)
-                                .where(create_at: date_range)
-                                .order(:created_at, :status)
-                                .page(page).per(per_page)
+    @pwa_field_forms = current_user.field_forms
+                                   .includes(:test_tubes)
+                                   .where(created_at: date_range)
+                                   .order(:created_at, :status)
+                                   .page(page).per(per_page)
   end
 
   # GET /app/field_forms/1
