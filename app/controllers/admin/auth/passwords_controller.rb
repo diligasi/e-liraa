@@ -12,7 +12,7 @@ module Admin::Auth
     private
 
     def set_user
-      cookies[:user_id] = current_user.id
+      cookies[:user_id] = current_admin_user.id
     end
   end
 end
