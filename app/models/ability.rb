@@ -15,11 +15,17 @@ class Ability
       can %i[index create read], FieldForm, user_id: user.id
       can :update, FieldForm, user_id: user.id, status: :pending
     end
-    
+
     if user.lab?
       can :manage, User, id: user.id
       can %i[index read], [Faq, Institutional]
       can %i[index read update], FieldForm, user: { departament_id: user.departament_id }, status: :pending
+    end
+
+    if user.supervisor?
+      can :manage, User, id: user.id
+      can %i[index read], [Faq, Institutional]
+      can %i[index read], FieldForm, user: { departament_id: user.departament_id }
     end
 
     # Define abilities for the passed in user here. For example:
