@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  root 'home#handler'
+
   namespace :admin do
     devise_for :users, path: '', controllers: { sessions: 'admin/auth/sessions', passwords: 'admin/auth/passwords' }
 
-    root 'users#index'
+    root to: redirect('/')
 
     resources :faqs
     resources :users
@@ -10,6 +12,7 @@ Rails.application.routes.draw do
     resources :departaments
     resources :larva_species
     resources :property_types
+    resources :institutionals
 
     resources :larvas,      only: %i[create update]
     resources :field_forms, only: %i[index show edit update]
