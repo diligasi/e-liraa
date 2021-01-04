@@ -13,13 +13,10 @@ class HomeController < ApplicationController
   private
 
   def redirect_to_role_home
-    case current_admin_user.role
-    when 'lab'
+    if current_admin_user.admin?
+      redirect_to controller: 'admin/users', action: 'index'
+    else # for lab and supervisor users
       redirect_to controller: 'admin/field_forms', action: 'index'
-    when 'supervisor'
-      redirect_to controller: 'admin/users', action: 'index'
-    else
-      redirect_to controller: 'admin/users', action: 'index'
     end
   end
 end
