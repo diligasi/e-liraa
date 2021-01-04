@@ -3,6 +3,8 @@ class Admin::AdminController < ActionController::Base
 
   before_action :authenticate_admin_user!
 
+  alias_method :current_user, :current_admin_user
+
   def page
     @page = params[:page] || 1
   end

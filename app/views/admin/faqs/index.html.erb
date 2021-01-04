@@ -24,8 +24,10 @@
         <div class="card">
           <div class="card-header">
             <div class="col-sm-12">
-              <%= link_to new_admin_faq_path, class: 'btn bg-gradient-primary btn-sm  float-sm-right' do %>
-                <i class="nav-icon fas fa-plus"></i>
+              <% if can? :create, Faq %>
+                <%= link_to new_admin_faq_path, class: 'btn bg-gradient-primary btn-sm  float-sm-right' do %>
+                  <i class="nav-icon fas fa-plus"></i>
+                <% end %>
               <% end %>
             </div>
           </div>
@@ -46,8 +48,8 @@
                     <td><%= admin_faq.question %></td>
                     <td><%= admin_faq.answer.truncate(50) %></td>
                     <td><%= link_to "#{translate 'actions.show'}", admin_faq_path(admin_faq), class: 'btn btn-block bg-gradient-info btn-sm' %></td>
-                    <td><%= link_to "#{translate 'actions.edit'}", edit_admin_faq_path(admin_faq), class: 'btn btn-block bg-gradient-primary btn-sm' %></td>
-                    <td><%= link_to "#{translate 'actions.destroy'}", admin_faq_path(admin_faq), class: 'btn btn-block bg-gradient-danger btn-sm', method: :delete, data: { confirm: "#{translate 'confirm'}" } %></td>
+                    <td><%= link_to("#{translate 'actions.edit'}", edit_admin_faq_path(admin_faq), class: 'btn btn-block bg-gradient-primary btn-sm') if can? :edit, admin_faq %></td>
+                    <td><%= link_to("#{translate 'actions.destroy'}", admin_faq_path(admin_faq), class: 'btn btn-block bg-gradient-danger btn-sm', method: :delete, data: { confirm: "#{translate 'confirm'}" }) if can? :destroy, admin_faq %></td>
                   </tr>
                 <% end %>
               </tbody>

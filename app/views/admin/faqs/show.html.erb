@@ -42,7 +42,7 @@
 
           <div class="card-footer">
             <%= link_to "#{translate 'actions.back'}", admin_faqs_path, class: 'btn btn-secondary' %>
-            <%= link_to "#{translate 'actions.edit'}", edit_admin_faq_path(@admin_faq), class: 'btn btn-primary' %>
+            <%= link_to("#{translate 'actions.edit'}", edit_admin_faq_path(@admin_faq), class: 'btn btn-primary') if can? :edit, @admin_faq %>
           </div>
         </div>
       </div>

@@ -44,8 +44,8 @@
           </section>
 
            <div class="card-footer">
-            <%= link_to "#{translate 'actions.edit'}", edit_admin_institutional_path(@admin_institutional), class: 'btn btn-primary' %>
-            <%= link_to "#{translate 'actions.destroy'}", admin_institutional_path(@admin_institutional), class: 'btn bg-gradient-danger', method: :delete, data: { confirm: "#{translate 'confirm'}" } %>
+            <%= link_to("#{translate 'actions.edit'}", edit_admin_institutional_path(@admin_institutional), class: 'btn btn-primary') if can? :edit, @admin_institutional %>
+            <%= link_to("#{translate 'actions.destroy'}", admin_institutional_path(@admin_institutional), class: 'btn bg-gradient-danger', method: :delete, data: { confirm: "#{translate 'confirm'}" }) if can? :destroy, @admin_institutional %>
           </div>
         </div>
       </div>

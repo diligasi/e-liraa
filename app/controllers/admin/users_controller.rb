@@ -1,4 +1,6 @@
 class Admin::UsersController < Admin::AdminController
+  load_and_authorize_resource
+
   before_action :set_admin_user, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/users
