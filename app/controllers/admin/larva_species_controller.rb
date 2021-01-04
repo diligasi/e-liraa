@@ -1,4 +1,6 @@
 class Admin::LarvaSpeciesController < Admin::AdminController
+  load_and_authorize_resource
+
   before_action :set_admin_larva_specy, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/larva_species

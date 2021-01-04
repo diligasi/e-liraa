@@ -1,4 +1,6 @@
 class Admin::DepartamentsController < Admin::AdminController
+  load_and_authorize_resource
+
   before_action :set_admin_departament, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/departaments

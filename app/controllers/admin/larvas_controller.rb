@@ -1,4 +1,6 @@
 class Admin::LarvasController < Admin::AdminController
+  load_and_authorize_resource
+
   before_action :set_admin_larva, only: [:update, :destroy]
 
   # POST /admin/larvas

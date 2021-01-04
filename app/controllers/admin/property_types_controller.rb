@@ -1,4 +1,6 @@
 class Admin::PropertyTypesController < Admin::AdminController
+  load_and_authorize_resource
+
   before_action :set_admin_property_type, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/property_types

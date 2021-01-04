@@ -1,4 +1,6 @@
 class Admin::FieldFormsController < Admin::AdminController
+  load_and_authorize_resource
+
   before_action :set_admin_field_form, only: %i[show edit update]
 
   # GET /admin/field_forms
