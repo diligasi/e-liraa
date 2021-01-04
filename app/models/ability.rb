@@ -4,6 +4,23 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    return if user.nil?
+
+    return can :manage, :all if user.admin?
+
+    alias_action :create, :read, :update, :destroy, to: :crud
+
+    if user.field?
+      can :manage, User, id: user.id
+      can %i[index create read], FieldForm, user_id: user.id
+      can :update, FieldForm, user_id: user.id, status: :pending
+    end
+
+    # if user.lab?
+    #   can %i[index read], [PropertyType, LarvaSpecy, ShedType, Faq, Institutional]
+    #   can %i[index read update], FieldForm, user: { departament_id: user.departament_id }, status: :pending
+    # end
+
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

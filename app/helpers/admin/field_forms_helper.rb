@@ -9,7 +9,7 @@ module Admin::FieldFormsHelper
   end
 
   def field_form_list_status_component(status)
-    status ? '<i class="fas fa-check-square" style="color: #21bf21;"></i> Completa'.html_safe : '<i class="fas fa-exclamation-triangle" style="color: #f53800;"></i> Pendente'.html_safe
+    status ? '<i class="fas fa-check-square" style="color: #21bf21;"></i> Completa'.html_safe : '<i class="fas fa-exclamation-triangle" style="color: #ffcc00;"></i> Pendente'.html_safe
   end
 
   def field_form_simple_status_component(status)

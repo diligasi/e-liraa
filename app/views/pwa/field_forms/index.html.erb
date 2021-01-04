@@ -43,7 +43,7 @@
                         <i class="nav-icon far fa-folder-open"></i>
                       <% end %>
                     </td>
-                    <td><%= field_form_list_status_component(pwa_field_form.status) %></td>
+                    <td><%= field_form_list_status_component(pwa_field_form.complete?) %></td>
                     <td><%= field_form_list_address(pwa_field_form) %></td>
                     <td><%= pwa_field_form.created_at.strftime('%d/%m/%Y') %></td>
                   </tr>

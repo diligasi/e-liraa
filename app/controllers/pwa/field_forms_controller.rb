@@ -1,4 +1,6 @@
 class Pwa::FieldFormsController < Pwa::PwaController
+  load_and_authorize_resource
+
   before_action :set_pwa_field_form, only: %i[show edit update]
 
   # GET /app/field_forms
@@ -87,7 +89,7 @@ class Pwa::FieldFormsController < Pwa::PwaController
   end
 
   def field_form_params
-    params.require(:field_form).permit(:user_id, :status, :street, :number, :complement, :district, :city, :state,
+    params.require(:field_form).permit(:user_id, :street, :number, :complement, :district, :city, :state,
                                        :country, :zipcode, :property_type_id, :visit_status, :visit_comment,
                                        :larvae_found, :larvicide, :rodenticide)
   end
