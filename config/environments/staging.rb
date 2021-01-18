@@ -64,14 +64,14 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
-    :password       => ENV['MAILGUN_SMTP_PASSWORD'],
-    :address        => ENV['MAILGUN_SMTP_SERVER'],
-    :domain         => 'e-liraa-stg.herokuapp.com',
-    :port           => ENV['MAILGUN_SMTP_PORT'],
-    :authentication => :plain
+    :address              => ENV['EMAIL_SMTP_SERVER'],
+    :port                 => ENV['EMAIL_SMTP_PORT'],
+    :user_name            => ENV['EMAIL_SMTP_LOGIN'],
+    :password             => ENV['EMAIL_SMTP_PASSWORD'],
+    :authentication       => :plain,
+    :enable_starttls_auto => true
   }
-  config.action_mailer.default_url_options = { :host => 'e-liraa-stg.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'vigiaedes-stg.herokuapp.com' }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
