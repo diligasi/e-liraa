@@ -1,10 +1,10 @@
-# Welcome to e-LIR*A*a!
+# Welcome to VigiAedes!
 
 Hi! For a brief context, this is a project with a scientific focus and with the purpose of assisting in pest control programs in the real world, more precisely, the LIRAa program.
 
 The "Levantamento de Índice Rápido para *Aedes aegypti*" (LIR*A*a) is an official guidance already approved and in use that aims to provide entomoepidemiological survey indexes for a quick and timely mapping of the possible progress of Aedes aegypti in order to direct the appropriate actions to be taken.
 
-The **e-LIR*A*a** project aims to make the LIR*A*a process more efficient by abandoning its analogue mode and computerizing the entire flow, from the data collected by the field agents to their laboratory analysis.
+The **VigiAedes** project aims to make the LIR*A*a process more efficient by abandoning its analogue mode and computerizing the entire flow, from the data collected by the field agents to their laboratory analysis.
 
 # Modules
 
