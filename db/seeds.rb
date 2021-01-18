@@ -1,3 +1,7 @@
+# Departament
+Departament.find_or_create_by(name: 'Secretaria #01', description: '')
+Departament.find_or_create_by(name: 'Secretaria #02', description: '')
+
 # PropertyTypes
 PropertyType.find_or_create_by(name: 'Apartamento', description: '')
 PropertyType.find_or_create_by(name: 'Casa', description: '')
