@@ -15,4 +15,14 @@ module Admin::FieldFormsHelper
   def field_form_simple_status_component(status)
     status ? '<i class="fas fa-check-square" style="color: #21bf21;"></i>'.html_safe : '<i class="fas fa-square" style="color: #dadfda;"></i>'.html_safe
   end
+
+  def field_form_statuses_name_for_human(status)
+    I18n.t("activerecord.attributes.field_form.statuses.#{status}")
+  end
+
+  def field_form_statuses_name_for_selection
+    FieldForm.statuses.keys.map do |status|
+      [field_form_statuses_name_for_human(status), status]
+    end
+  end
 end

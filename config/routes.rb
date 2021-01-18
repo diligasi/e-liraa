@@ -15,7 +15,12 @@ Rails.application.routes.draw do
     resources :institutionals
 
     resources :larvas,      only: %i[create update]
-    resources :field_forms, only: %i[index show edit update]
+
+    resources :field_forms, only: %i[index show edit update] do
+      collection do
+        resources :search_filters, only: %i[index], controller: 'field_forms/search_filters', as: 'field_form_search_filters'
+      end
+    end
   end
 
   scope module: 'pwa', path: 'app' do
