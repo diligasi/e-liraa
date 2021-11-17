@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2020_12_10_214852) do
     t.index ["user_id"], name: "index_field_forms_on_user_id"
   end
 
-  create_table "institucionals", force: :cascade do |t|
+  create_table "institutionals", force: :cascade do |t|
     t.text "description"
     t.string "phone_numbers"
   end
