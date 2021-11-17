@@ -31,18 +31,18 @@
           <div class="card-body">
             <strong>Nome</strong>
             <p class="text-muted">
-              <%= @admin_departament.name %>
+              <%= @admin_department.name %>
             </p>
 
             <strong>Descrição</strong>
             <p class="text-muted">
-              <%= @admin_departament.description %>
+              <%= @admin_department.description %>
             </p>
           </div>
 
           <div class="card-footer">
-            <%= link_to "#{translate 'actions.back'}", admin_departaments_path, class: 'btn btn-secondary' %>
-            <%= link_to "#{translate 'actions.edit'}", edit_admin_departament_path(@admin_departament), class: 'btn btn-primary' %>
+            <%= link_to "#{translate 'actions.back'}", admin_departments_path, class: 'btn btn-secondary' %>
+            <%= link_to "#{translate 'actions.edit'}", edit_admin_department_path(@admin_department), class: 'btn btn-primary' %>
           </div>
         </div>
       </div>

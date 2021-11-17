@@ -7,8 +7,8 @@ class Admin::FieldFormsController < Admin::AdminController
   # GET /admin/field_forms.json
   def index
     @admin_field_forms = FieldForm.includes(:test_tubes, :user)
-    @admin_field_forms = @admin_field_forms.where(users: { departament_id: current_admin_user.departament_id }) unless current_admin_user.admin?
-    @admin_field_forms = @admin_field_forms.order('users.departament_id desc, field_forms.created_at, field_forms.status').page(page).per(per_page)
+    @admin_field_forms = @admin_field_forms.where(users: { department_id: current_admin_user.department_id }) unless current_admin_user.admin?
+    @admin_field_forms = @admin_field_forms.order('users.department_id desc, field_forms.created_at, field_forms.status').page(page).per(per_page)
   end
 
   # GET /admin/field_forms/1

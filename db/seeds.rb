@@ -1,14 +1,14 @@
-# Departament ========================================================================================
+# Department ========================================================================================
 department = { name: 'Secretaria Municipal de Saúde de Niterói', description: 'www.saude.niteroi.rj.gov.br - Rua Visconde de Sepetiba, 987, 8° andar - Niterói - Tel: (21) 2716-5800 - Designer: C. S. Rodrigues' }
-current_departament = Department.find_or_create_by(department)
+current_department = Department.find_or_create_by(department)
 
 # Regions ============================================================================================
 # [
-#   { name: '1A', department: current_departament },
-#   { name: '1B', department: current_departament },
-#   { name: '2A', department: current_departament },
-#   { name: '2B', department: current_departament },
-#   { name: '3A', department: current_departament }
+#   { name: '1A', department: current_department },
+#   { name: '1B', department: current_department },
+#   { name: '2A', department: current_department },
+#   { name: '2B', department: current_department },
+#   { name: '3A', department: current_department }
 # ].each do |region|
 #   Region.find_or_create_by(region)
 # end

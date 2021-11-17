@@ -34,8 +34,8 @@
     </div>
 
     <div class="form-group">
-      <%= form.label :departament, 'Secretaria' %>
-      <%= form.select :departament_id, options_for_select(Departament.all.map { |ls| [ls.name, ls.id] }, form.object.departament_id), { include_blank: 'Opcional para usuários pwaistradores' }, class: 'form-control', disabled: true %>
+      <%= form.label :department, 'Secretaria' %>
+      <%= form.select :department_id, options_for_select(Department.all.map { |ls| [ls.name, ls.id] }, form.object.department_id), { include_blank: 'Opcional para usuários pwaistradores' }, class: 'form-control', disabled: true %>
     </div>
 
     <div class="form-group">

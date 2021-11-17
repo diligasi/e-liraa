@@ -1,11 +1,11 @@
-<%= form_for([:admin, admin_departament]) do |form| %>
-  <% if admin_departament.errors.any? %>
+<%= form_for([:admin, admin_department]) do |form| %>
+  <% if admin_department.errors.any? %>
     <div class="alert alert-info alert-dismissible" style="margin: 15px 15px 0 15px;">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <h5><i class="icon fas fa-info"></i> <%= pluralize(admin_departament.errors.count, 'erro impede', plural: 'erros impedem') %> que esta secretaria seja salva:</h5>
+      <h5><i class="icon fas fa-info"></i> <%= pluralize(admin_department.errors.count, 'erro impede', plural: 'erros impedem') %> que esta secretaria seja salva:</h5>
       
       <ul>
-        <% admin_departament.errors.full_messages.each do |message| %>
+        <% admin_department.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
@@ -25,7 +25,7 @@
   </div>
 
   <div class="card-footer">
-    <%= link_to "#{translate 'actions.back'}", admin_departaments_path, class: 'btn btn-secondary' %>
+    <%= link_to "#{translate 'actions.back'}", admin_departments_path, class: 'btn btn-secondary' %>
     <%= form.submit class: 'btn btn-primary' %>
   </div>
 <% end %>

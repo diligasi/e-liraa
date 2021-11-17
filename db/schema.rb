@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2020_12_10_214852) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "departaments", force: :cascade do |t|
+  create_table "departments", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
@@ -113,8 +113,8 @@ ActiveRecord::Schema.define(version: 2020_12_10_214852) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.bigint "departament_id"
-    t.index ["departament_id"], name: "index_users_on_departament_id"
+    t.bigint "department_id"
+    t.index ["department_id"], name: "index_users_on_department_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -125,5 +125,5 @@ ActiveRecord::Schema.define(version: 2020_12_10_214852) do
   add_foreign_key "larvas", "test_tubes"
   add_foreign_key "test_tubes", "field_forms"
   add_foreign_key "test_tubes", "shed_types"
-  add_foreign_key "users", "departaments"
+  add_foreign_key "users", "departments"
 end

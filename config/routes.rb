@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :faqs
     resources :users
     resources :shed_types
-    resources :departaments
+    resources :departments
     resources :larva_species
     resources :property_types
     resources :institutionals

@@ -17,13 +17,13 @@ class Ability
     if user.lab?
       can :manage, User, id: user.id
       can %i[index read], [Faq, Institutional]
-      can %i[index read update], FieldForm, user: { departament_id: user.departament_id }, status: :pending
+      can %i[index read update], FieldForm, user: { department_id: user.department_id }, status: :pending
     end
 
     if user.supervisor?
       can :manage, User, id: user.id
       can %i[index read], [Faq, Institutional]
-      can %i[index read], FieldForm, user: { departament_id: user.departament_id }
+      can %i[index read], FieldForm, user: { department_id: user.department_id }
     end
   end
 end
