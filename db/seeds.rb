@@ -3,15 +3,15 @@ department = { name: 'Secretaria Municipal de Saúde de Niterói', description: 
 current_department = Department.find_or_create_by(department)
 
 # Regions ============================================================================================
-# [
-#   { name: '1A', department: current_department },
-#   { name: '1B', department: current_department },
-#   { name: '2A', department: current_department },
-#   { name: '2B', department: current_department },
-#   { name: '3A', department: current_department }
-# ].each do |region|
-#   Region.find_or_create_by(region)
-# end
+[
+  { name: '1A', department: current_department },
+  { name: '1B', department: current_department },
+  { name: '2A', department: current_department },
+  { name: '2B', department: current_department },
+  { name: '3A', department: current_department }
+].each do |region|
+  Region.find_or_create_by(region)
+end
 
 # PropertyTypes ======================================================================================
 [
