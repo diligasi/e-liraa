@@ -40,3 +40,6 @@ yarn-debug.log*
 
 # Ignore file compiled by webpack
 public/service-worker.js*
+
+# Ignore IDEA folder and configuration files
+/.idea/*
