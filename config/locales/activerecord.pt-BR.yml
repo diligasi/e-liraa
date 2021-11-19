@@ -44,6 +44,7 @@ pt-BR:
           lab: Monitor de laboratório
           field: Agente de campo
         status: Status
+        region: Região
       department:
         name: Nome
         description: Descrição
@@ -110,6 +111,8 @@ pt-BR:
               inclusion: "tem que ser um dos seguintes valores: Administrador, Supervisor, Monitor de laboratório ou Agente de campo"
             status:
               inclusion: "tem que ser um dos seguintes valores: true ou false (ativo ou inativo)"
+            region:
+              blank: não pode ficar em branco
         department:
           attributes:
             name:

@@ -18,6 +18,7 @@ class User < ApplicationRecord
   validates :name,     presence: true
   validates :cpf,      presence: true, uniqueness: true
   validates :email,    presence: true, uniqueness: { case_sensitive: false }, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :region,   presence: true, unless: -> { admin? }
   validates :role,     inclusion: { in: roles.keys }
   validates :status,   inclusion: { in: [true, false] }
 
