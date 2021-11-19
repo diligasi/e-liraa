@@ -34,6 +34,15 @@
             <% end %>
           <% end %>
         </li>
+
+        <li class="nav-item">
+          <% if can? :read, Region %>
+            <%= link_to admin_regions_path, class: 'nav-link' do %>
+              <i class="nav-icon fas fa-map-marked-alt"></i>
+              <p><%= translate 'activerecord.models.region.other' %></p>
+            <% end %>
+          <% end %>
+        </li>
         
         <li class="nav-item">
           <% if can? :read, PropertyType %>

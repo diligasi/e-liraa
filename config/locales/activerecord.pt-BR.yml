@@ -49,6 +49,7 @@ pt-BR:
         description: Descrição
       region:
         name: Nome
+        department: Secretaria
       property_type:
         name: Nome
         description: Descrição
@@ -113,6 +114,12 @@ pt-BR:
           attributes:
             name:
               blank: não pode ficar em branco.
+        region:
+          attributes:
+            name:
+              blank: não pode ficar em branco.
+            department:
+              required: não pode ficar em branco.
         property_type:
           attributes:
             name:

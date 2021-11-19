@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
     resources :faqs
     resources :users
+    resources :regions
     resources :shed_types
     resources :departments
     resources :larva_species
