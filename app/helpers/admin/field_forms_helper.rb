@@ -1,7 +1,7 @@
 module Admin::FieldFormsHelper
 
   def field_form_list_address(field_form)
-    "#{field_form.street}, #{field_form.number}, #{field_form.district}, #{field_form.city}, #{field_form.state} - #{field_form.zipcode}"
+    "#{field_form.street}, #{field_form.number} - #{field_form.block}, #{field_form.district}, #{field_form.city}, #{field_form.state} - #{field_form.zipcode}"
   end
 
   def field_form_list_larvae_status_component(status)

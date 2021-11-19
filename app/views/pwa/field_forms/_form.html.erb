@@ -53,6 +53,11 @@
     </div>
 
     <div class="form-group">
+      <%= form.label :block %>
+      <%= form.text_field :block, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
       <%= form.label :property_type_id, 'Tipo de Imóvel' %>
       <%= form.select :property_type_id, options_for_select(PropertyType.order(:name).map { |ls| [ls.name, ls.id] }, form.object.property_type_id), { include_blank: 'Selecione o tipo' }, class: 'form-control' %>
     </div>

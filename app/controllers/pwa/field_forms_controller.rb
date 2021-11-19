@@ -89,7 +89,7 @@ class Pwa::FieldFormsController < Pwa::PwaController
   end
 
   def field_form_params
-    params.require(:field_form).permit(:user_id, :street, :number, :complement, :district, :city, :state,
+    params.require(:field_form).permit(:user_id, :street, :number, :block, :complement, :district, :city, :state,
                                        :country, :zipcode, :property_type_id, :visit_status, :visit_comment,
                                        :larvae_found, :larvicide, :rodenticide)
   end

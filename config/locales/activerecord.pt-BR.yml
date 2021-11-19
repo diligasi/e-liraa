@@ -61,6 +61,7 @@ pt-BR:
         street: Rua
         number: Número
         complement: Complemento
+        block: Quadra
         district: Bairro
         city: Cidade
         state: Estado
@@ -91,7 +92,6 @@ pt-BR:
         collected_amount: Qtd. de larvas coletadas
         comments: Observação
       larva:
-        block: Quadra
         comments: Observação
     errors:
       models:

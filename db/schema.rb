@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_18_193028) do
+ActiveRecord::Schema.define(version: 2021_11_19_065731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2021_11_18_193028) do
     t.boolean "rodenticide"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "block"
     t.index ["property_type_id"], name: "index_field_forms_on_property_type_id"
     t.index ["user_id"], name: "index_field_forms_on_user_id"
   end
@@ -67,7 +68,6 @@ ActiveRecord::Schema.define(version: 2021_11_18_193028) do
   create_table "larvas", force: :cascade do |t|
     t.bigint "test_tube_id", null: false
     t.bigint "larva_specy_id", null: false
-    t.string "block"
     t.text "comments"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
