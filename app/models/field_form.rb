@@ -33,6 +33,7 @@ class FieldForm < ApplicationRecord
     where('lower(street) like :like or
             lower(complement) like :like or
             lower(district) like :like or
+            lower(block) like :like or
             number = :equal or
             zipcode = :equal',
           like: "%#{term.downcase}%", equal: term)

@@ -27,7 +27,7 @@
 
         <div class="card-tools">
           <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i></button>
-          <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+<!--          <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>-->
         </div>
       </div>
 
@@ -44,7 +44,7 @@
             <div class="col-md-4">
               <div class="form-group">
                 <%= label_tag('Endereço', nil, class: 'control-label') %><br />
-                <%= text_field_tag(:by_address, params[:by_address], placeholder: 'Rua, número, complemento, bairro ou CEP', class: 'form-control') %>
+                <%= text_field_tag(:by_address, params[:by_address], placeholder: 'Rua, número, complemento, quadra, bairro ou CEP', class: 'form-control') %>
               </div>
             </div>
 

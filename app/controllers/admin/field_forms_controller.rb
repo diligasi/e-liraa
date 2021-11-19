@@ -7,7 +7,7 @@ class Admin::FieldFormsController < Admin::AdminController
   # GET /admin/field_forms.json
   def index
     @admin_field_forms = FieldForm.includes(:test_tubes, user: [region: [:department]])
-    @admin_field_forms = @admin_field_forms.where(users: { department: current_admin_user.region.department }) unless current_admin_user.admin?
+    @admin_field_forms = @admin_field_forms.where(users: { regions: { department: current_admin_user.region&.department } }) unless current_admin_user.admin?
     @admin_field_forms = @admin_field_forms.order('departments.id desc, field_forms.created_at, field_forms.status').page(page).per(per_page)
   end
 

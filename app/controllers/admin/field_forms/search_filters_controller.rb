@@ -3,9 +3,9 @@ module Admin::FieldForms
 
     def index
       query = if current_admin_user.admin?
-                FieldForm.includes(:test_tubes, :user).where(nil)
+                FieldForm.includes(:test_tubes, user: [region: [:department]]).where(nil)
               else
-                FieldForm.includes(:test_tubes, :user).where(users: { department_id: current_admin_user.department_id })
+                FieldForm.includes(:test_tubes, user: [region: [:department]]).where(users: { regions: { department: current_admin_user.region&.department } })
               end
 
       query = query.by_agent_name(params[:by_agent_name]) if params[:by_agent_name].present?
@@ -22,7 +22,7 @@ module Admin::FieldForms
       query = query.by_larva_specy(params[:by_larva_specy]) if params[:by_larva_specy].present?
       query = query.by_larvae_amount(params[:by_larvae_amount]) if params[:by_larvae_amount].present?
 
-      @admin_field_forms = query.order('users.department_id desc, field_forms.created_at, field_forms.status').page(page).per(per_page)
+      @admin_field_forms = query.order('departments.id desc, field_forms.created_at, field_forms.status').page(page).per(per_page)
 
       render 'admin/field_forms/index'
     end
