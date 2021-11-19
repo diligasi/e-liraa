@@ -7,6 +7,9 @@ pt-BR:
       department:
         one: Secretaria
         other: Secretarias
+      region:
+        one: Região
+        other: Regiões
       property_type:
         one: Tipo de imóvel
         other: Tipos de imóvel
@@ -44,6 +47,8 @@ pt-BR:
       department:
         name: Nome
         description: Descrição
+      region:
+        name: Nome
       property_type:
         name: Nome
         description: Descrição
