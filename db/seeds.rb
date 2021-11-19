@@ -48,3 +48,10 @@ end
 
 # Institutionals =====================================================================================
 Institutional.find_or_create_by(phone_numbers: '(21) XXXXX-XXXX', description: 'Tornar o processo de Levantamento de Índice Rápido para Aedes aegypti (LIRAa) mais eficiente e preciso em seu mapeamento de regiões afetadas, qualidade dos dados coletados, redução das perdas de informação durante as coletas e facilitar o acesso e divulgação posterior dos resultados.')
+
+if Rails.env.development?
+  User.find_or_create_by(name: 'Diogo', cpf: '12637932740', status: 1, role: 0, email: 'diogo@olhaedes.com') { |user| user.password = '369311' }
+  User.find_or_create_by(name: 'Supervisor', cpf: '61057263095', status: 1, role: 1, email: 'supervisor@olhaedes.com') { |user| user.password = '123456' }
+  User.find_or_create_by(name: 'Laboratório', cpf: '41200975014', status: 1, role: 2, email: 'lab@olhaedes.com') { |user| user.password = '123456' }
+  User.find_or_create_by(name: 'Agente', cpf: '05450674058', status: 1, role: 3, email: 'field@olhaedes.com') { |user| user.password = '123456' }
+end
