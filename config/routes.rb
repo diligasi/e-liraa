@@ -21,6 +21,8 @@ Rails.application.routes.draw do
         resources :search_filters, only: %i[index], controller: 'field_forms/search_filters', as: 'field_form_search_filters'
       end
     end
+
+    get 'filter_regions_by_department' => 'users#filter_regions_by_department'
   end
 
   scope module: 'pwa', path: 'app' do

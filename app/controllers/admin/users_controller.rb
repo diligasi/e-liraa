@@ -65,6 +65,10 @@ class Admin::UsersController < Admin::AdminController
     end
   end
 
+  def filter_regions_by_department
+    @filtered_regions = Region.where(department_id: params[:selected_department])
+  end
+
   private
 
   def set_admin_user
@@ -72,6 +76,6 @@ class Admin::UsersController < Admin::AdminController
   end
 
   def user_params
-    params.require(:user).permit(:name, :cpf, :email, :status, :role, :department_id)
+    params.require(:user).permit(:name, :cpf, :email, :status, :role, :region_id)
   end
 end

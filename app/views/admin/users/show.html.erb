@@ -54,9 +54,9 @@
               <%= roles_name_for_human(@admin_user.role) %>
             </p>
 
-            <strong>Secretaria</strong>
+            <strong>Região (Secretaria)</strong>
             <p class="text-muted">
-              <%= @admin_user.department.present? ? @admin_user.department.name : '---' %>
+              <%= @admin_user.region.present? ? "#{@admin_user.region.name} (#{@admin_user.region.department.name})" : '---' %>
             </p>
           </div>
 
