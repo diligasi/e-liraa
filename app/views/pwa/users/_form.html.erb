@@ -35,7 +35,12 @@
 
     <div class="form-group">
       <%= form.label :department, 'Secretaria' %>
-      <%= form.select :department_id, options_for_select(Department.all.map { |ls| [ls.name, ls.id] }, form.object.department_id), { include_blank: 'Opcional para usuários pwaistradores' }, class: 'form-control', disabled: true %>
+      <%= select_tag 'Secretaria', options_from_collection_for_select(Department.select(:id, :name), 'id', 'name', form.object.region&.department&.id), { prompt: 'Opcional para usuários administradores', class: 'form-control', disabled: true } %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :region, 'Região', id: 'user_region_label' %>
+      <%= form.select :region_id, options_for_select(Region.where(department_id: form.object.region&.department&.id).map { |ls| [ls.name, ls.id] }, form.object.region_id), { include_blank: 'Primeiro selecione a secretaria desejada' }, class: 'form-control', disabled: true %>
     </div>
 
     <div class="form-group">

@@ -47,9 +47,9 @@
               <%= roles_name_for_human(@pwa_user.role) %>
             </p>
 
-            <strong>Secretaria</strong>
+            <strong>Região (Secretaria)</strong>
             <p class="text-muted">
-              <%= @pwa_user.department.present? ? @pwa_user.department.name : '---' %>
+              <%= @pwa_user.region.present? ? "#{@pwa_user.region.name} (#{@pwa_user.region.department.name})" : '---' %>
             </p>
           </div>
 
