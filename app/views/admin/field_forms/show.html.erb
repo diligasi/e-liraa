@@ -225,7 +225,7 @@
         </div>
 
         <% if @admin_field_form.larvae_found %>
-          <%= form_for([:admin, @test_tube&.analyzes&.new]) do |form| %>
+          <%= form_for([:admin, @test_tube.analyzes.new]) do |form| %>
             <%= form.hidden_field :test_tube_id, value: @test_tube.id %>
 
             <div class="modal-body">
