@@ -181,13 +181,6 @@
                                   <div class="card-body">
                                     <div class="row">
                                       <div class="col-sm-12">
-                                        <strong>Quadra:</strong>
-                                        <%= analysis.block %>
-                                      </div>
-                                    </div>
-
-                                    <div class="row">
-                                      <div class="col-sm-12">
                                         <strong>Observações:</strong>
                                         <%= analysis.comments.present? ? analysis.comments : 'Sem observações.' %>
                                       </div>
@@ -231,27 +224,29 @@
           </button>
         </div>
 
-        <%= form_for([:admin, @test_tube.analyzes.new]) do |form| %>
-          <%= form.hidden_field :test_tube_id, value: @test_tube.id %>
+        <% if @admin_field_form.larvae_found %>
+          <%= form_for([:admin, @test_tube&.analyzes&.new]) do |form| %>
+            <%= form.hidden_field :test_tube_id, value: @test_tube.id %>
 
-          <div class="modal-body">
-            <div class="card-body">
-              <div class="form-group">
-                <%= form.label :larva_specy %>
-                <%= form.select :larva_specy_id, options_for_select(LarvaSpecy.all.map { |ls| [ls.name, ls.id] }, form.object.larva_specy), {}, class: 'form-control' %>
-              </div>
-              
-              <div class="form-group">
-                <%= form.label :comments %>
-                <%= form.text_area :comments, class: 'form-control', placeholder: 'Insira um breve comentário' %>
+            <div class="modal-body">
+              <div class="card-body">
+                <div class="form-group">
+                  <%= form.label :larva_specy %>
+                  <%= form.select :larva_specy_id, options_for_select(LarvaSpecy.all.map { |ls| [ls.name, ls.id] }, form.object.larva_specy), {}, class: 'form-control' %>
+                </div>
+
+                <div class="form-group">
+                  <%= form.label :comments %>
+                  <%= form.text_area :comments, class: 'form-control', placeholder: 'Insira um breve comentário' %>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="modal-footer justify-content-between">
-            <%= link_to "#{translate 'actions.close'}", '#', class: 'btn btn-secondary', data: { dismiss: 'modal' } %>
-            <%= form.submit class: 'btn btn-primary' %>
-          </div>
+            <div class="modal-footer justify-content-between">
+              <%= link_to "#{translate 'actions.close'}", '#', class: 'btn btn-secondary', data: { dismiss: 'modal' } %>
+              <%= form.submit class: 'btn btn-primary' %>
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>
