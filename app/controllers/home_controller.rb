@@ -15,7 +15,9 @@ class HomeController < ApplicationController
   def redirect_to_role_home
     if current_admin_user.admin?
       redirect_to controller: 'admin/users', action: 'index'
-    else # for lab and supervisor users
+    elsif current_admin_user.supervisor?
+      redirect_to controller: 'admin/dashboard', action: 'index'
+    else # for lab users
       redirect_to controller: 'admin/field_forms', action: 'index'
     end
   end

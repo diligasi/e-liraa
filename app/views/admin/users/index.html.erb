@@ -66,6 +66,12 @@
           <div class="card-footer clearfix">
             <%= paginate @admin_users %>
           </div>
+
+          <%= line_chart User.group_by_day(:created_at).count %>
+          <br />
+          <%= pie_chart User.group(:region).count.transform_keys { |k| k.nil? ? 'Sem região' : k.name } %>
+          <br />
+          <%= geo_chart FieldForm.group(:zipcode).count %>
         </div>
       </div>
     </div>

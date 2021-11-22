@@ -8,6 +8,9 @@ class Ability
 
     return can :manage, :all if user.admin?
 
+    # can :index, 'admin/dashboard' # if user.admin? || user.supervisor?
+    # can :index, :dashboard # if user.admin? || user.supervisor?
+
     if user.field?
       can :manage, User, id: user.id
       can %i[index create read], FieldForm, user_id: user.id
@@ -22,6 +25,7 @@ class Ability
 
     if user.supervisor?
       can :manage, User, id: user.id
+      can :index, 'admin/dashboard'
       can %i[index read], [Faq, Institutional]
       can %i[index read], FieldForm, user: { department_id: user.department_id }
     end

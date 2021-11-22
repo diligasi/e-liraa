@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       end
     end
 
+    get 'dashboard' => 'dashboard#index'
     get 'filter_regions_by_department' => 'users#filter_regions_by_department'
   end
 
