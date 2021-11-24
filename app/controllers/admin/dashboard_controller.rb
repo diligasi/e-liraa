@@ -1,6 +1,8 @@
 class Admin::DashboardController < Admin::AdminController
   authorize_resource class: false
 
+  before_action :basic_dashboard_objects, only: %i[index]
+
   # GET /admin/dashboard
   # GET /admin/dashboard.json
   def index
@@ -14,20 +16,56 @@ class Admin::DashboardController < Admin::AdminController
     # N de Imóveis Recuperados tratados c Larvicida
     # Observações
 
-    # User.where('extract(month from created_at)=?', DateTime.now.strftime('%m'))
+    @total_visits      = @field_forms.size
+    @clean             = @field_forms.where(larvae_found: false, visit_status: :allowed).size
+    @with_larvae       = @field_forms.where(larvae_found: true).size
+    @closed_or_refused = @field_forms.where(visit_status: %i[refused closed_location]).size
 
-    # @total_visits = 65
-    # @closed_or_refused = 8
-    # @with_larvae = 13
-    # @clean = 44
+    @number_of_larvae_per_region = @test_tubes.group('regions.name').sum('test_tubes.collected_amount')
+    @species_by_region           = @region.group_by { |hsh| hsh[:region].itself }
+                                          .map do |key, val|
+                                            { name: key, data: val.map do |q|
+                                              { q.name => q.count }
+                                            end.reduce({}, :merge) }
+                                          end
 
-    current_field_forms = FieldForm.where('extract(month from created_at)=?', DateTime.now.strftime('%m'))
+    @property_types      = @field_forms.group(:property_type).count.transform_keys { |k| k.nil? ? 'Sem tipo definido' : k.name }
+    @contaminated_places = @shed_types.group_by { |hsh| hsh[:region].itself }
+                                      .map do |key, val|
+                                        { name: key, data: val.map do |q|
+                                          { q.name => q.count }
+                                        end.reduce({}, :merge) }
+                                      end
+  end
 
-    @total_visits      = current_field_forms.size
-    @closed_or_refused = current_field_forms.where(visit_status: %i[refused closed_location]).size
-    @with_larvae       = current_field_forms.where(larvae_found: true).size
-    @clean             = current_field_forms.where(larvae_found: false, visit_status: :allowed).size
+  private
 
-    @property_types = current_field_forms.group(:property_type).count.transform_keys { |k| k.nil? ? 'Sem tipo definido' : k.name }
+  def basic_dashboard_objects
+    @field_forms = FieldForm.left_outer_joins(:test_tubes, user: [region: [:department]]).where(base_condition)
+    @test_tubes  = TestTube.joins(field_form: [user: [region: [:department]]]).where(base_condition).order('regions.name')
+    @region      = Region.joins('left outer join departments on departments.id = regions.department_id
+                                 left outer join users on users.region_id = regions.id
+                                 left outer join field_forms on field_forms.user_id = users.id
+                                 right outer join test_tubes on test_tubes.field_form_id = field_forms.id
+                                 right outer join larvas on larvas.test_tube_id = test_tubes.id
+                                 right outer join larva_species on larva_species.id = larvas.larva_specy_id')
+                         .group('regions.name, larva_species.name')
+                         .select('regions.name as "region", larva_species.name, count(larva_species.*)')
+                         .order('regions.name')
+
+    @shed_types = ShedType.joins('left outer join test_tubes on test_tubes.shed_type_id = shed_types.id
+                                 left outer join field_forms on field_forms.id = test_tubes.field_form_id
+                                 left outer join users on users.id = field_forms.user_id
+                                 right outer join regions on regions.id = users.region_id
+                                 right outer join departments on departments.id = regions.department_id')
+                          .group('regions.name, shed_types.name')
+                          .select('regions.name as "region", shed_types.name, count(test_tubes.*)')
+                          .order('regions.name')
+  end
+
+  def base_condition
+    condition_for_non_admin = current_admin_user.admin? ? '' : " and departments.id = #{current_admin_user.region&.department&.id}"
+
+    "extract(month from field_forms.created_at) = #{DateTime.now.strftime('%m')} #{condition_for_non_admin}"
   end
 end

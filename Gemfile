@@ -18,6 +18,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'kaminari', '~> 1.1'
 
 # Assets Gems ##################################################################
+gem 'chartkick'
+gem 'groupdate'
 gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
