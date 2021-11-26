@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   root 'home#handler'
 
   namespace :admin do
+    require 'sidekiq/web'
+
+    mount Sidekiq::Web => 'sidekiq'
+
     devise_for :users, path: '', controllers: { sessions: 'admin/auth/sessions', passwords: 'admin/auth/passwords' }
 
     root to: redirect('/')
@@ -23,7 +27,8 @@ Rails.application.routes.draw do
       end
     end
 
-    get 'dashboard' => 'dashboard#index'
+    get 'dashboard'  => 'dashboard#index'
+    get 'csv_export' => 'dashboard#export'
     get 'filter_regions_by_department' => 'users#filter_regions_by_department'
   end
 

@@ -16,6 +16,8 @@ gem 'cancancan'
 gem 'devise'
 gem 'jbuilder', '~> 2.7'
 gem 'kaminari', '~> 1.1'
+gem 'redis'
+gem 'sidekiq'
 
 # Assets Gems ##################################################################
 gem 'chartkick'

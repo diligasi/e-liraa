@@ -34,5 +34,7 @@ module ELiraa
 
     config.i18n.default_locale = :'pt-BR'
     config.time_zone = 'Brasilia'
+
+    config.active_job.queue_adapter = :sidekiq
   end
 end
