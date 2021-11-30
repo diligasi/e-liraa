@@ -20,9 +20,9 @@
 
             <div style="display: table-cell">
               <div class="btn-group" style="vertical-align: baseline !important;">
-                <button type="button" class="btn btn-info btn-block btn-flat" style="border-radius: 5px;">
+                <%= link_to admin_csv_export_path, method: 'get', remote: true, class: 'btn btn-info btn-block btn-flat export-btn', style: 'border-radius: 5px;' do %>
                   <i class="fa fa-file-excel"></i>&nbsp;&nbsp;&nbsp;Baixar relatório
-                </button>
+                <% end %>
               </div>
             </div>
           </div>
@@ -179,6 +179,43 @@
 </section>
 
 <script>
+    let generateUUID;
+
+    $(document).on('turbolinks:load', function() {
+        return $('body').on('click', '.export-btn', function(e) {
+            e.preventDefault();
+
+            let url, uuid;
+
+            uuid = generateUUID();
+            url = decodeURI(e.target.href + '?export_id=' + uuid);
+
+            // Disable Export btn
+            $('.export-btn').html("<i class='fa fa-file-excel'></i>&nbsp;&nbsp;&nbsp;Baixando...");
+            $('.export-btn').addClass('disabled');
+
+            return window.ExportChannel.Subscribe(uuid, function() {
+                $.get(url);
+            });
+        });
+    });
+
+    // https://www.w3resource.com/javascript-exercises/javascript-math-exercise-23.php
+    generateUUID = function() {
+        let d;
+
+        d = new Date().getTime();
+
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+            let r;
+
+            r = (d + Math.random() * 16) % 16 | 0;
+            d = Math.floor(d / 16);
+
+            return (c === 'x' ? r : r & 0x3 | 0x8).toString(16);
+        });
+    };
+
     $(function() {
         $('#dashboard-range-picker').daterangepicker({
             "locale": {

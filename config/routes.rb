@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     require 'sidekiq/web'
 
     mount Sidekiq::Web => 'sidekiq'
+    mount ActionCable.server => '/cable'
 
     devise_for :users, path: '', controllers: { sessions: 'admin/auth/sessions', passwords: 'admin/auth/passwords' }
 

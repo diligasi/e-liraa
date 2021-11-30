@@ -66,4 +66,9 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
+
+  config.action_cable.url = 'ws:localhost:3000/cable'
+
+  config.action_cable.allowed_request_origins = [%r{http://*}, %r{https://*}]
+  config.action_cable.worker_pool_size = 5
 end

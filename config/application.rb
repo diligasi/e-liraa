@@ -36,5 +36,6 @@ module ELiraa
     config.time_zone = 'Brasilia'
 
     config.active_job.queue_adapter = :sidekiq
+    config.action_cable.mount_path = '/cable'
   end
 end

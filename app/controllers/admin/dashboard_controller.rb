@@ -38,6 +38,13 @@ class Admin::DashboardController < Admin::AdminController
                                       end
   end
 
+  # GET /admin/export
+  def export
+    ExportJob.perform_later(params[:export_id])
+
+    head :accepted
+  end
+
   private
 
   def basic_dashboard_objects
