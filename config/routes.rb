@@ -30,7 +30,9 @@ Rails.application.routes.draw do
 
     get 'dashboard'  => 'dashboard#index'
     get 'csv_export' => 'dashboard#export'
-    get 'filter_regions_by_department' => 'users#filter_regions_by_department'
+
+    get 'filter_dashboard_by_date_range' => 'dashboard#filter_dashboard_by_date_range'
+    get 'filter_regions_by_department'   => 'users#filter_regions_by_department'
   end
 
   scope module: 'pwa', path: 'app' do

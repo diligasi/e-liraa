@@ -45,7 +45,7 @@
       <div class="col-lg-3 col-6">
         <div class="small-box bg-info">
           <div class="inner">
-            <h3><%= @total_visits %></h3>
+            <h3 id="total-visits"><%= @total_visits %></h3>
 
             <p style="font-weight: bold;">└> Com base nas fichas criadas</p>
           </div>
@@ -59,9 +59,9 @@
       <div class="col-lg-3 col-6">
         <div class="small-box bg-success">
           <div class="inner">
-            <h3><%= @clean %></h3>
+            <h3 id="clean-places"><%= @clean %></h3>
 
-            <p style="font-weight: bold;">
+            <p id="clean-places-percentage" style="font-weight: bold;">
               <%= @clean.positive? ? "└> #{(@clean * 100) / @total_visits}% dos locais visitados" : 'Número de visitas insuficientes para cálculo' %>
             </p>
           </div>
@@ -75,9 +75,9 @@
       <div class="col-lg-3 col-6">
         <div class="small-box bg-warning" style="color: #fff !important;">
           <div class="inner">
-            <h3><%= @closed_or_refused %></h3>
+            <h3 id="closed-or-refused"><%= @closed_or_refused %></h3>
 
-            <p style="font-weight: bold;">
+            <p id="closed-or-refused-percentage" style="font-weight: bold;">
               <%= @closed_or_refused.positive? ? "└> #{(@closed_or_refused * 100) / @total_visits}% dos locais visitados" : 'Número de visitas insuficientes para cálculo' %>
             </p>
           </div>
@@ -91,9 +91,9 @@
       <div class="col-lg-3 col-6">
         <div class="small-box bg-danger">
           <div class="inner">
-            <h3><%= @with_larvae %></h3>
+            <h3 id="with-larvae"><%= @with_larvae %></h3>
 
-            <p style="font-weight: bold;">
+            <p id="with-larvae-percentage" style="font-weight: bold;">
               <%= @with_larvae.positive? ? "└> #{(@with_larvae * 100) / @total_visits}% dos locais visitados" : 'Número de visitas insuficientes para cálculo' %>
             </p>
           </div>
@@ -130,11 +130,11 @@
           <div class="card-body">
             <div class="tab-content p-0">
               <div class="chart tab-pane active" id="species-by-region" style="position: relative; height: 300px;">
-                <%= column_chart @species_by_region %>
+                <%= column_chart @species_by_region, id: 'species-by-region-chart' %>
               </div>
 
               <div class="chart tab-pane" id="number-of-larvae-per-region" style="position: relative; height: 300px;">
-                <%= pie_chart @number_of_larvae_per_region %>
+                <%= pie_chart @number_of_larvae_per_region, id: 'number-of-larvae-per-region-chart' %>
               </div>
             </div>
           </div>
@@ -164,11 +164,11 @@
           <div class="card-body">
             <div class="tab-content p-0">
               <div class="chart tab-pane active" id="property-types" style="position: relative; height: 300px;">
-                <%= pie_chart @property_types %>
+                <%= pie_chart @property_types, id: 'property-types-chart' %>
               </div>
 
               <div class="chart tab-pane" id="contaminated-places" style="position: relative; height: 300px;">
-                <%= area_chart @contaminated_places %>
+                <%= area_chart @contaminated_places, id: 'contaminated-places-chart' %>
               </div>
             </div>
           </div>
@@ -200,7 +200,6 @@
         });
     });
 
-    // https://www.w3resource.com/javascript-exercises/javascript-math-exercise-23.php
     generateUUID = function() {
         let d;
 
@@ -255,7 +254,7 @@
             "startDate": "<%= DateTime.now.beginning_of_month.strftime('%d/%m/%Y') %>",
             "endDate": "<%= DateTime.now.end_of_month.strftime('%d/%m/%Y') %>"
         }, function(start, end, label) {
-            console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+            $.get(`/admin/filter_dashboard_by_date_range?start=${start.format('YYYY-MM-DD')}&end=${end.format('YYYY-MM-DD')}`)
         });
     });
 </script>
