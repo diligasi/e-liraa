@@ -68,6 +68,11 @@ class FieldForm < ApplicationRecord
       .where(test_tubes: { collected_amount: amount })
   }
 
+  scope :by_dashboard_range, lambda { |condition|
+    left_outer_joins(:test_tubes, user: [region: [:department]])
+      .where(condition)
+  }
+
   private
 
   def set_correct_status
